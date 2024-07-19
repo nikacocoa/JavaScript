@@ -2,7 +2,7 @@ let fruits = {
     apple: "りんご",
     strawberry: "いちご",
     grape: "ぶどう",
-    lemon: "れもん"
+    lemon: "れもん",
 };
 
 console.log(fruits.grape);
