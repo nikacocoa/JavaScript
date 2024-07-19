@@ -1,42 +1,40 @@
-let products = [
-    {
-        category: "調理器具",
-        subcategory: "鍋",
-        items: [
-            { name: "フライパン", price: 3000 },
-            { name: "鍋", price: 4500 },
-            { name: "圧力鍋", price: 5000 }
-        ]
+let categories = {
+    "家電": {
+        "冷蔵庫": [],
+        "洗濯機": []
     },
-    {
-        category: "調理器具",
-        subcategory: "包丁",
-        items: [
-            { name: "三徳包丁", price: 2500 },
-            { name: "ペティナイフ", price: 1500 },
-            { name: "出刃包丁", price: 3500 }
-        ]
+    "家具": {
+        "ソファ": [],
+        "テーブル": []
+    },
+    "調理器具": {
+        "フライパン": [],
+        "包丁": [],
+        "まな板": []
     }
-];
+};
 
-let displayDiv = document.getElementById('display');
+categories["調理器具"]["フライパン"].push({ name: "テフロンフライパン", price: 2500 });
+categories["調理器具"]["包丁"].push({ name: "三徳包丁", price: 3000 });
+categories["調理器具"]["まな板"].push({ name: "抗菌まな板", price: 1200 });
 
-products.forEach(productCategory => {
-    let categoryTitle = document.createElement('h2');
-    categoryTitle.textContent = productCategory.category;
-    displayDiv.appendChild(categoryTitle);
+let displayProducts = function(categories) {
+    let productListDiv = document.getElementById("product-list");
+    let htmlContent = "";
 
-    let subcategoryTitle = document.createElement('h3');
-    subcategoryTitle.textContent = productCategory.subcategory;
-    displayDiv.appendChild(subcategoryTitle);
-
-    let itemList = document.createElement('ul');
-
-    productCategory.items.forEach(item => {
-        let listItem = document.createElement('li');
-        listItem.textContent = `${item.name} - ¥${item.price}`;
-        itemList.appendChild(listItem);
+    Object.keys(categories).forEach(category => {
+        htmlContent += `<h2>大分類: ${category}</h2>`;
+        Object.keys(categories[category]).forEach(subCategory => {
+            htmlContent += `<h3>  小分類: ${subCategory}</h3>`;
+            categories[category][subCategory].forEach(product => {
+                htmlContent += `<p>    商品: ${product.name}, 価格: ¥${product.price}</p>`;
+            });
+        });
     });
 
-    displayDiv.appendChild(itemList);
-});
+    productListDiv.innerHTML = htmlContent;
+}
+
+window.onload = function() {
+    displayProducts(categories);
+};
