@@ -1,7 +1,7 @@
-var a = [1,2,3];
+var a = [1, 2, 3];
 
 try {
-    console.log(a[i]);
+    console.log(a[1]);
 } catch (error) {
-    console.log("エラーが発生しました: " + error.message);
+    console.error("例外が発生しました: " + error.message);
 }
