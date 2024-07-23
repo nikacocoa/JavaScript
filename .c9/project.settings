@@ -1,4 +1,7 @@
 {
+    "ace": {
+        "@tabSize": 2
+    },
     "extensions": {
         "@aws.samcli.lambdaTimeout": 90000,
         "@editor.acceptSuggestionOnEnter": "on",
